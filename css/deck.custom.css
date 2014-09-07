@@ -1,5 +1,5 @@
 /* Some base CSS customizations I've found useful -- feel free to remove them if you don't need them */
-#title-slide h1 { top: 20%; font-size: 2.5em; margin-top: 20%; position: relative; }
+#title-slide h1 { top: 10%; font-size: 2.5em; margin-top: 10%; position: relative; }
 #title-slide h2 { width: 100%; text-align: center; color: #aaaaaa; border: 0; position: relative;}
 .deck-container h2 { border-bottom: 0; font-size: 2em; }
 .deck-container img { display: inline; }
@@ -10,5 +10,13 @@
     margin-left:auto !important;
     margin-right:auto !important;
 }
-
+h1, h2 {
+    color: darkblue !important;
+}
+h2 {
+    font-size: 64px !important;
+}
+h3 {
+    font-size: 32px !important;
+}
 /* Your own custom CSS goes here */
