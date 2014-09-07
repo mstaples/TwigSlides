@@ -5,5 +5,10 @@
 .deck-container img { display: inline; }
 .slide { font-size: 120% !important; }
 .slide h2 { width: 100%; text-align: center; }
+.slide {
+    width: 70%;
+    margin-left:auto !important;
+    margin-right:auto !important;
+}
 
 /* Your own custom CSS goes here */
