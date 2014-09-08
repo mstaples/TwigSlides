@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ecc7d13-2b7c-4065-8bc1-adab61911c11" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/valentine-elephant.png" afterPath="$PROJECT_DIR$/images/valentine-elephant.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/deck.core.css" afterPath="$PROJECT_DIR$/css/deck.core.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SymfonySlides.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +28,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="615" column="104" selection-start="39916" selection-end="39916" vertical-scroll-proportion="0.53571427" vertical-offset="8085" max-vertical-offset="11430">
+            <state line="59" column="53" selection-start="3413" selection-end="3413" vertical-scroll-proportion="0.33333334" vertical-offset="721" max-vertical-offset="11430">
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1285,7 +1282,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="615" column="104" selection-start="39916" selection-end="39916" vertical-scroll-proportion="0.53571427" vertical-offset="8085" max-vertical-offset="11430">
+        <state line="59" column="53" selection-start="3413" selection-end="3413" vertical-scroll-proportion="0.33333334" vertical-offset="721" max-vertical-offset="11430">
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
