@@ -300,7 +300,7 @@
             <h3>/Resources/public</h3>
             <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> js, images, and css asset directories for your bundle</h5>
             <h3>/Resources/views</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:40%"><i class="fa fa-heart"></i> contains a directory of templates for each Controller file.</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> contains a directory of templates for each Controller file.</h5>
         </div>
     </div>
 
@@ -694,7 +694,7 @@
             <h3>Create a new directory:</h3>
             <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Command</li>
             <h3>Create a new PHP file:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Command/UpdateAvailableItemsCommand.php</li>
+            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Command/regenerateHealthCommand.php</li>
             <h3>Create your Command:</h3>
             <div style="width:100%">
             <pre class="brush: php">
@@ -708,8 +708,7 @@
                      {
                           $this
                                ->setName('regenerate-health')
-                               ->setDescription('Regenerate Character Health')
-                              ;
+                               ->setDescription('Regenerate Character Health');
                      }
 
                      protected function execute(InputInterface $input, OutputInterface $output)
@@ -744,6 +743,9 @@
                             ));
                     }
             </pre>
+            <div class="alert alert-success text-center" style="width:50%;border: solid 2px darkgreen; padding:5px;margin-bottom:5px;">
+                <h4>php app/console regenerate-health 23</h4>
+            </div>
             <div style="width:65%;text-align: center;margin-left:auto;margin-right:auto;" class="text-center">
                 <img src="images/long-cartoon-look-left-elephant.png" style="max-height:30%;float:right;">
                 <img src="images/round-cartoon-look-right-elephant.png" style="max-height:30%;float:left;">
