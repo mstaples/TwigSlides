@@ -281,9 +281,9 @@
             <h3>src</h3>
             <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> This is Your Everything</h5>
             <h3>src/MyTeam</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> Contains all bundles created with this group name.</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> Contains all bundles created with this group name</h5>
             <h3>src/MyTeam/MyGameBundle</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> Contains all code and assets for your bundle.</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> Contains all code and assets for your bundle</h5>
         </div>
     </div>
 
@@ -298,9 +298,9 @@
             <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /routing.yml assigns routes to controllers</h5>
             <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /services.yml contains definitions for your custom services</h5>
             <h3>/Resources/public</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> js, images, and css asset directories for your bundle</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Js, images, and css asset directories for your bundle</h5>
             <h3>/Resources/views</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> contains a directory of templates for each Controller file.</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Contains a directory of templates for each Controller file</h5>
         </div>
     </div>
 
@@ -315,9 +315,9 @@
             <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /routing.yml assigns routes to controllers</h5>
             <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /services.yml contains definitions for your custom services</h5>
             <h3>/Resources/public</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> js, images, and css asset directories for your bundle</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Js, images, and css asset directories for your bundle</h5>
             <h3>/Resources/views</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:40%"><i class="fa fa-heart"></i> contains a directory of templates for each Controller file.</h5>
+            <h5 style="margin-left:50px;color:#2E2E1F ;width:40%"><i class="fa fa-heart"></i> Contains a directory of templates for each Controller file.</h5>
         </div>
     </div>
 
@@ -381,7 +381,10 @@
             {
                 public function indexAction($name)
                 {
-                    return $this->render('MyTeamMyGameBundle:Default:index.html.twig', array('name' => $name));
+                    return $this->render('MyTeamMyGameBundle:Default:index.html.twig',
+                        array(
+                            'name' => $name
+                        ));
                 }
             }
             </pre>
@@ -408,10 +411,11 @@
                         'darkgreen' => "Twig makes Templates Easy.",
                         'purple' => "I Like Pie."
                     ];
-                    return $this->render('MyTeamMyGameBundle:Default:index.html.twig', array(
-                        'title' => $title,
-                        'messages' => $messages
-                    ));
+                    return $this->render('MyTeamMyGameBundle:Default:index.html.twig',
+                        array(
+                            'title' => $title,
+                            'messages' => $messages
+                        ));
                 }
             }
             </pre>
@@ -530,7 +534,7 @@
             <h3>Our New Entity</h3>
             <div style="width:65%">
             <pre class="brush: php">
-                namespace ONN\BrunBundle\Entity;
+                namespace MyTeam\MyGameBundle\Entity;
 
                 use Doctrine\ORM\Mapping as ORM;
 
