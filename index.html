@@ -40,6 +40,9 @@
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        .syntaxhighlighter .toolbar {
+            display: none !important;
+        }
         .glyphicon-play {
             font-family: 'Glyphicons Halflings' !important;
             font-style: normal !important;
@@ -63,25 +66,33 @@
     </style>
 </head>
 <body class="deck-container" style="padding:0px;">
-    <div class="slide ui-corner-all" id="title-slide"  style="width:100%;height:100%;background-image: url('images/rainbow-elephants.png');background-repeat: no-repeat; background-position: top center;background-size: auto 100%; top:0px; left:0px; border: solid 1px white;">
+    <div class="slide ui-corner-all" id="title-slide"  style="width:100%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: top center;background-size: auto 100%; top:0px; left:0px; border: solid 1px white;">
         <div class="page-header" style="text-align:center;">
-            <h1 class="ui-corner-all" style="background: white;opacity:0.95;">Symfony2 PHP Framework<br/><small>The Very Basics</small></h1>
-            <img src="images/symfony-small.png" style="max-height:35%;height:300px">
-            <h3 class="alert ui-corner-all" style="color:darkblue; font-size: 48px !important; opacity: 0.9;background: white; width: auto; margin-top:0px;padding-top:5px;padding-bottom:5px;margin-left:auto;margin-right:auto;">by: Margaret Staples</h3>
+            <h1 class="ui-corner-all" style="text-align:left;">Twig<br/><small>Easier Than You Think</small></h1>
+            <div style="max-height:35%;height:400px"></div>
+            <h3 class="alert ui-corner-all" style="color:darkblue; font-size: 48px !important; width: auto; margin-top:0px;padding-top:5px;padding-bottom:5px;text-align:right;margin-right:20px;">by: Margaret Staples</h3>
         </div>
     </div>
 
     <div class="slide ui-corner-all text-center" id="slide1" style="background: white;width:100%;height:100%">
         <h2>Hello, Nice to Meet You</h2>
         <h3>I'm Margaret Staples</h3>
-        <img src="images/drawing-elephant.png">
+        <img src="images/drawing-elephant.png"><br/>
+        <img id="image1" src="images/daisies/dark-blue-daisy.png" style="width:200px;">
+        <img id="image2" src="images/daisies/fucia-daisy.jpg" style="width:200px;">
+        <img id="image3" src="images/daisies/light-blue-daisy.jpg" style="width:200px;">
+        <img id="image4" src="images/daisies/purple-daisy.jpg" style="width:200px;">
+        <img id="image5" src="images/daisies/red-daisy.jpg" style="width:200px;">
+        <img id="image6" src="images/daisies/white-daisy.jpg" style="width:200px;">
     </div>
 
     <div class="slide ui-corner-all text-center" id="slide1a" style="background: white;width:100%;height:100%">
         <h2>Hello, Nice to Meet You</h2>
         <h3>I'm Margaret Staples</h3>
-        <h4>I've been working with Symfony2 for about 3 years.</h4>
-        <img src="images/symfony-small.png" style="max-height:45%;margin-top:10px;">
+        <h4>I've been working with Twig<br/>
+            <small>As part of the Symfony2 Framework</small><br/>
+            for about 3 years.</h4>
+        <img src="images/twig-logo.png" style="max-height:45%;margin-top:10px;">
     </div>
 
     <div class="slide ui-corner-all text-center" id="slide1b" style="background: white;width:100%;height:100%">
@@ -94,866 +105,354 @@
 
     <div class="slide ui-corner-all" id="slide2"  style="width:100%;height:100%;">
         <div style="min-width:80%;height:100%;background-image: url('images/round-cartoon-elephant.png');background-repeat: no-repeat; background-position: center right;background-size: 30% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-        <h2>Overview</h2><hr>
-            <h3>#1 Installation & Configuration</h3>
-            <h3>#2 File Structure</h3>
-            <h3>#3 My First Page: Route, Controller, Template</h3>
-            <h3>#4 Creating an Entity</h3>
-            <h3>#5 Interacting with an Entity</h3>
-            <h3>#6 Installing a Bundle</h3>
-            <h3>#7 Creating a Command</h3>
-            <h3>#8 Creating a Service</h3>
+        <h2>Topics</h2><hr>
+            <h3>#1 Installation & Setup</h3>
+            <h3>#2 Layouts and Blocks</h3>
+            <h3>#4 Variables</h3>
+            <h3>#5 String Filters</h3>
+            <h3>#6 Template Logic</h3>
+            <h3>#7 Render and Include</h3>
+            <h3>#8 Custom Filters</h3>
             <h3>#9 Questions</h3>
         </div>
     </div>
 
-    <div class="slide ui-corner-all" id="slide3a"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/long-cartoon-elephant.png');background-repeat: no-repeat; background-position: 90% 10%;background-size: 25% auto; top:20px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr>
-            <h3>Step 1: Have a webserver<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> I will assume linux</small></h3>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide3b"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/long-cartoon-elephant.png');background-repeat: no-repeat; background-position: 90% 10%;background-size: 25% auto; top:20px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr>
-            <h3>Step 1: Have a webserver<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> I will assume linux</small></h3>
-            <h3>Step 2: Install Composer<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> curl -s https://getcomposer.org/installer | php<br/></small></h3>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide3c"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/long-cartoon-elephant.png');background-repeat: no-repeat; background-position: 90% 10%;background-size: 25% auto; top:20px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr style="width:60%">
-            <h3>Step 1: Have a webserver<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> I will assume linux</small></h3>
-            <h3>Step 2: Install Composer<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> curl -s https://getcomposer.org/installer | php</small></h3>
-            <h3>Step 3: Have an Empty Database<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> note the database name, and root password.</small></h3>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide3d"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/long-cartoon-look-down-left-elephant.png');background-repeat: no-repeat; background-position: 90% 10%;background-size: 25% auto; top:20px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr style="width:60%">
-            <h3>Step 1: Have a webserver<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> I will assume linux</small></h3>
-            <h3>Step 2: Install Composer<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> curl -s https://getcomposer.org/installer | php</small></h3>
-            <h3>Step 3: Have an Empty Database<br/>
-                <small style="margin-left:100px;color: #2E2E1F;"><i class="fa fa-heart"></i> note the database name, and root password.</small></h3>
-            <h3>Step 4: Install Symfony</h3>
-            <div style="width:100%;text-align:center;">
-                <small style="font-weight:bold">
-                php composer.phar create-project symfony/framework-standard-edition /path/to/webroot/MyProject '2.5.*'</small>
-            </div>
-            <div class="alert alert-success" style="margin-left:50px; border: solid 2px darkgreen; padding:5px;">
-                <li style="list-style:none"><i class="fa fa-heart"></i> php composer.phar <span style="color:darkblue ;float:right;">// use php to run composer</span></li>
-                <li style="list-style:none"><i class="fa fa-heart"></i> create-project symfony/framework-standard-edition <span style="color:darkblue ;float:right;">// create a new Symfony project</span></li>
-                <li style="list-style:none"><i class="fa fa-heart"></i> /path/to/webroot/MyProject <span style="color:darkblue ;float:right;">// where you want the new project</span></li>
-                <li style="list-style:none"><i class="fa fa-heart"></i> '2.5.*' <span style="color:darkblue ;float:right;">// use any 2.5 version of Symfony</span></li>
-            </div>
-            <div style="width:100%;text-align:center;">
-                <img src="images/symfony-small.png" style="height:120px; margin-top:10px;margin-left:auto;margin-right:auto;">
-            </div>
-        </div>
-    </div>
-
     <div class="slide ui-corner-all" id="slide3e"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/long-cartoon-look-left-elephant.png');background-repeat: no-repeat; background-position: center right;background-size: 30% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr>
-            <h3>Install Symfony</h3>
-                <div style="width:100%;text-align:center;">
-                    <div class="alert alert-success" style="margin-left:auto; margin-right:auto; border: solid 2px darkgreen; padding:5px;margin-bottom:5px;">
-                    <small style="font-weight:bold">
-                        php composer.phar create-project symfony/framework-standard-edition /path/to/webroot/MyProject '2.5.*'
-                    </small>
-                    </div>
-                </div>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> Install the demo bundle?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> database_driver (pdo_mysql)?</h5>
-            <h5 style="margin-left:100px;color:darkblue ;"><i class="fa fa-heart"></i> database_host (127.0.0.1)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> database_port (null)?</h5>
-            <h5 style="margin-left:100px;color:darkblue ;"><i class="fa fa-heart"></i> database_name (symfony)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> database_user (root)?</h5>
-            <h5 style="margin-left:100px;color:darkblue ;"><i class="fa fa-heart"></i> database_password (null)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> mailer_transport (smtp)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> mailer_user (null)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> mailer_password (null)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> locale (en)?</h5>
-            <h5 style="margin-left:100px;color:darkgreen;"><i class="fa fa-heart"></i> secret (ThisTokenIsNotSoSecretChangeIt)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> debug_toolbar (true)?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> use_assetic_controller (true)?</h5>
+        <div style="min-width:80%;height:100%; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Installation & Setup <span class="glyphicon glyphicon-play"></span></h3><hr>
+            <h3>Option #1: Install Symfony Standard Edition</h3>
+            <h5>(If you prefer a custom Symfony2 install, remember to include Twig in your composer.json)</h5>
+
+            <div style="width:70%;margin-left:auto;margin-right:auto;text-align:right">
+                command
+            </div>
+            <div class="alert" style="width:70%;margin-left:auto;margin-right:auto;padding:20px;background-color:black;border:solid 1px limegreen;color:#d3d3d3;font-size:20px;">
+                $ php composer.phar create-project symfony/framework-standard-edition /path/to/webroot/MyProject '2.5.*'
+            </div>
+
+            <div style="width:100%;text-align: center;" class="text-center">
+                <img src="images/composer.png" style="max-width:500px;margin-left:auto;margin-right:auto;"><br/>
+                https://getcomposer.org/
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide3e.1"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Installation & Setup <span class="glyphicon glyphicon-play"></span></h3><hr>
+            <h3>Option #1: Install Symfony Standard Edition</h3>
+            <h5>Render a template.</h5>
+
+            <pre class="brush: php">
+                namespace MyTeam\Game\Controller;
+
+                use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+                class DefaultController extends Controller
+                {
+                    public function characterSheetAction()
+                    {
+                        return $this->render('MyTeamGameBundle:Default:character_sheet.html.twig');
+                    }
+                }
+            </pre>
+
+            <div style="position:relative; width:100%;text-align: center;top:-50px;" class="text-center">
+                <img src="images/symfony.png" style="max-height:250px;margin-left:auto;margin-right:auto;"><br/>
+                http://symfony.com/
+            </div>
+
         </div>
     </div>
 
     <div class="slide ui-corner-all" id="slide3f"  style="width:100%;height:100%;">
         <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr style="width:60%">
-            <h3>Check Your Configuration</h3>
-            <div class="alert alert-success text-center" style="margin-left:50px; border: solid 2px darkgreen; padding:5px;margin-bottom:5px;">
-                <h5>http://localhost/SampleProject/web/config.php</h5>
+            <h3>Installation & Setup <span class="glyphicon glyphicon-play"></span></h3><hr style="width:60%">
+            <h3>Option #2: Install Twig Alone</h3>
+
+            <div style="width:50%;margin-left:auto;margin-right:auto;text-align:right">
+                command
             </div>
-            <div style="width:100%;text-align: center">
-                <img src="images/check-config1.png" style="margin-left:50px; width:85%">
+            <div class="alert" style="width:50%;margin-left:auto;margin-right:auto;padding:20px;background-color:black;border:solid 1px limegreen;color:#d3d3d3;font-size:20px;">
+                $ composer require "twig/twig:~1.0"
             </div>
-        </div>
-    </div>
 
-    <div class="slide ui-corner-all" id="slide3g"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-play"></span></h3><hr style="width:60%">
-            <h3>Check Your Configuration</h3>
-            <div class="alert alert-success text-center" style="margin-left:50px; border: solid 2px darkgreen; padding:5px;margin-bottom:5px;">
-                <h5>http://localhost/SampleProject/web/config.php</h5>
+            <div style="width:100%;text-align: center; top: -50px;" class="text-center">
+                <img src="images/composer.png" style="max-width:500px;margin-left:auto;margin-right:auto;"><br/>
+                https://composer.org/
             </div>
-            <div style="width:100%;text-align: center;" class="text-center">
-                <img src="images/check-config2.png" style="margin-left:50px; width:85%">
+
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide3f.1"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: top right;background-size: 45% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Installation & Setup <span class="glyphicon glyphicon-play"></span></h3><hr style="width:60%">
+            <h3>Option #2: Install Twig Alone</h3>
+            <h5>Send variables to your Twig templates using php.</h5>
+            <li style="list-style:none"><i class="fa fa-heart"></i> Composer will have created your vendor directory and composer files.</li>
+            <li style="list-style:none"><i class="fa fa-heart"></i> Create a directory -- <span style="color:blue">views</span> -- to store templates.</li>
+            <li style="list-style:none"><i class="fa fa-heart"></i> Create a file -- <span style="color:blue">index.php</span> -- to send data to your templates.</li>
+
+            <div style="width:50%;margin-left:auto;margin-right:auto;text-align:right">
+                New Twig Project
             </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide3h"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installation & Configuration <span class="glyphicon glyphicon-pause pull-right"></span></h3><hr style="width:60%">
-            <h3>Generate Your Empty Bundle</h3>
-            <div class="alert alert-success text-center" style="margin-left:50px; border: solid 2px darkgreen; padding:5px;margin-bottom:5px;">
-                <h5>php app/console generate:bundle</h5>
+            <div class="alert" style="width:50%;margin-left:auto;margin-right:auto;padding:20px;background-color:black;border:solid 1px limegreen;color:#d3d3d3;font-size:20px;">
+                vendor/<br/>
+                <span style="text-decoration:underline;">views/<br/>
+                index.php</span><br/>
+                composer.json<br/>
+                composer.lock
             </div>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart" style="color:darkblue "></i> Bundle namespace? <span style="color:darkblue ">MyTeam/MyGameBundle</span></h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> Bundle name [MyTeamMyGameBundle]?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> Target directory [/var/www/MyProject/src]?</h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart" style="color:darkblue "></i> Configuration format (yml, xml, php, or annotation)? <span style="color:darkblue ">yml</span></h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart" style="color:darkblue "></i> Do you want to generate the whole directory structure [no]? <span style="color:darkblue ">yes</span></h5>
-            <h5 style="margin-left:100px;color:#2E2E1F ;"><i class="fa fa-heart"></i> Do you confirm generation, update Kernel, update Routing [yes]?</h5>
-            <div style="width:100%;text-align: center;" class="text-center">
-                <img src="images/long-cartoon-look-up-elephant.png" style="max-height:40%">
+
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide3f.2"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: top right;background-size: 45% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Installation & Setup <span class="glyphicon glyphicon-pause"></span></h3><hr style="width:60%">
+            <h3>Option #2: Install Twig Alone</h3>
+            <h5>Render a template.</h5>
+
+            <div style="width:50%;text-align:right">
+                <pre class="brush: php">
+                    require_once '/path/to/vendor/autoload.php';
+
+                    $loader = new Twig_Loader_Filesystem('views');
+                    $twig = new Twig_Environment($loader);
+
+                    echo $twig->render('character_sheet.html');
+                </pre>
+                index.php
             </div>
-        </div>
-    </div>
 
-    <div class="slide ui-corner-all" id="slide4a"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/rainbow-elephant.png');background-repeat: no-repeat; background-position: top right;background-size: 15% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>File Structure: What Goes Where <span class="glyphicon glyphicon-play"></span></h3><hr style="min-width:80%">
-            <h2>app</h2>
-            <h2>vendor</h2>
-            <h2>web</h2>
-            <h2>src</h2>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide4b"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/rainbow-elephant.png');background-repeat: no-repeat; background-position: top right;background-size: 15% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>File Structure: What Goes Where <span class="glyphicon glyphicon-play"></span></h3><hr style="min-width:80%">
-            <h3>app</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/cache<br/><span style="color:darkblue ; float:right;">// project caches</span></h5>
-            <div style="clear:both"></div>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/logs<br/><span style="color:darkblue ; float:right;">// project logs</span></h5>
-            <div style="clear:both"></div>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/AppKernel.php<br/><span style="color:darkblue ; float:right;">// includes installed bundles</span></h5>
-            <div style="clear:both"></div>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/config/parameters.yml<br/><span style="color:darkblue ; float:right;">// project parameters initially generated by install</span></h5>
-            <div style="clear:both"></div>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/config/config.yml<br/><span style="color:darkblue ; float:right;">// important configuration for bundles</span></h5>
-            <div style="clear:both"></div>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/config/security.yml<br/><span style="color:darkblue ; float:right;">// security configuration for project</span></h5>
-            <div style="clear:both"></div>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> app/config/routing.yml<br/><span style="color:darkblue ; float:right;">// project-wide routing</span></h5>
-            <div style="clear:both"></div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide4c"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/rainbow-elephant.png');background-repeat: no-repeat; background-position: top right;background-size: 15% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>File Structure: What Goes Where <span class="glyphicon glyphicon-play"></span></h3><hr style="min-width:80%">
-            <h3>vendor</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Other People's Bundles</h5>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Never Go Here</h5>
-            <h3>web</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Generated and/or Linked Web Assets</h5>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Never Go Here</h5>
-            <div style="clear:both"></div>
-            <h3>everything else</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Not Under /src? Not Your Problem</h5>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide4d"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/rainbow-elephant.png');background-repeat: no-repeat; background-position: top right;background-size: 15% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>File Structure: What Goes Where <span class="glyphicon glyphicon-play"></span></h3><hr style="min-width:80%">
-            <h3>src</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> This is Your Everything</h5>
-            <h3>src/MyTeam</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> Contains all bundles created with this group name</h5>
-            <h3>src/MyTeam/MyGameBundle</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:80%"><i class="fa fa-heart"></i> Contains all code and assets for your bundle</h5>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide4e"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/rainbow-elephant.png');background-repeat: no-repeat; background-position: top right;background-size: 15% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>File Structure:
-            <small style="color:darkblue;">src/MyTeam/MyGameBundle</small> <span class="glyphicon glyphicon-play"></span></h3>
-            <hr style="min-width:80%">
-            <h3>/Controller</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Controllers hold the logic for rendering a page</h5>
-            <h3>/Resources/config</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /routing.yml assigns routes to controllers</h5>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /services.yml contains definitions for your custom services</h5>
-            <h3>/Resources/public</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Js, images, and css asset directories for your bundle</h5>
-            <h3>/Resources/views</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Contains a directory of templates for each Controller file</h5>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide4f"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/valentine-elephant.png');background-repeat: no-repeat; background-position: bottom right;background-size: 50% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>File Structure:
-                <small style="color:darkblue;">src/MyTeam/MyGameBundle</small> <span class="glyphicon glyphicon-pause"></span></h3>
-            <hr style="min-width:80%">
-            <h3>/Controller</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Controllers hold the logic for rendering a page</h5>
-            <h3>/Resources/config</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /routing.yml assigns routes to controllers</h5>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> /services.yml contains definitions for your custom services</h5>
-            <h3>/Resources/public</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:70%"><i class="fa fa-heart"></i> Js, images, and css asset directories for your bundle</h5>
-            <h3>/Resources/views</h3>
-            <h5 style="margin-left:50px;color:#2E2E1F ;width:40%"><i class="fa fa-heart"></i> Contains a directory of templates for each Controller file.</h5>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5a"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>/Resources/config/routing.yml</h3>
-            <h4>Default Route</h4>
-            <pre class="brush: plain">
-            my_team_my_game_homepage:
-            path:     /hello/{name}
-            defaults: { _controller: MyTeamMyGameBundle:Default:index }
-            </pre>
-            <p>Line #1 - <span style="font-weight:bold">Route Name</span></p>
-            <p style="margin-left:20px;">This is what you will use to call the route from inside your project.</p>
-            <p>Line #2 - <span style="font-weight:bold">Route Path</span></p>
-            <p style="margin-left:20px;">Words in curly brackets {} are variables.</p>
-            <p>Line #3 - <span style="font-weight:bold">Route Definition</span></p>
-            <p style="margin-left:20px;">This specifies the controller file (Default) and function (index).</p>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5a.1"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>/Resources/config/routing.yml</h3>
-            <h4>Default Route</h4>
-            <pre class="brush: plain">
-            my_team_my_game_homepage:
-            path:     /hello/{name}
-            defaults: { _controller: MyTeamMyGameBundle:Default:index }
-            </pre>
-            <p>Line #3 - <span style="font-weight:bold">Route Definition</span></p>
-            <p style="margin-left:20px;">Optionally includes default values for route variables:</p>
-            <small>
-            <pre class="brush: plain">
-            defaults: { _controller: MyTeamMyGameBundle:Default:index, name: 'World' }
-            </pre>
-            </small>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5b"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Our New Route</h3>
-            <pre class="brush: plain">
-            index:
-            path:     /
-            defaults: { _controller: MyTeamMyGameBundle:Default:index }
-            </pre>
-            <p>Since the Default controller example is already 'index' we will modify it rather than make a new definition.</p>
-            <p>Here we've changed the <span style="font-weight:bold">Route Name</span> to "index" and the <span style="font-weight:bold">Route Path</span> to "/".</p>
-            <br/>
-            <div style="width:100%;text-align: center;" class="text-center">
-                <img src="images/routing.png" style="max-height:40%">
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5c"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>/Controller/DefaultController.php</h3>
-            <h4>Default Controller</h4>
-            <p>Controller file names end with the word Controller.</p>
-            <p>Controller functions (the logic for an individual page) end with the word Action.</p>
-            <small>
-            <pre class="brush: php">
-            namespace MyTeam\MyGameBundle\Controller;
-
-            use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-            class DefaultController extends Controller
-            {
-                public function indexAction($name)
-                {
-                    return $this->render('MyTeamMyGameBundle:Default:index.html.twig',
-                        array(
-                            'name' => $name
-                        ));
-                }
-            }
-            </pre>
-            </small>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5d"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Our New (modified) Controller</h3>
-            <small>
-            <pre class="brush: php">
-            namespace MyTeam\MyGameBundle\Controller;
-
-            use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-            class DefaultController extends Controller
-            {
-                public function indexAction()
-                {
-                    $title = "Welcome to My Game";
-
-                    $messages = [
-                        'red' => "This is my first page.",
-                        'darkgreen' => "Twig makes Templates Easy.",
-                        'purple' => "I Like Pie."
-                    ];
-
-                    return $this->render('MyTeamMyGameBundle:Default:index.html.twig',
-                        array(
-                            'title' => $title,
-                            'messages' => $messages
-                        ));
-                }
-            }
-            </pre>
-            </small>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5e"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 40% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>/Resources/views/Default/index.html.twig</h3>
-            <h4>Default Template</h4>
-            <p>The .twig extension on our Templates means we are able to use Twig tags to render our Template.</p>
-            <p>To simply display a variable with Twig, surround the variable name with double curly brackets {{}}.</p>
-            <div style="min-width:50%;max-width:80%;">
-            <pre class="brush: xml">
-                Hello {{ name }}!
-            </pre>
-            </div>
-            <p>Twig will execute simple logic like if/else, for loops, and variable assignments when surrounded by {% %}</p>
-            <ul>
-                <li style="list-style:none"><i class="fa fa-heart"></i> Example: {% set condition = 'potato' %}</li>
-                <li style="list-style:none"><i class="fa fa-heart"></i> Example: {% if condition == 'yes' %}Conditional Content{% endif %}</li>
-                <li style="list-style:none"><i class="fa fa-heart"></i> Reference: <span style="color:darkgreen;font-weight:bold;">http://twig.sensiolabs.org/</span></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5f"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 40% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Our New (modified) Template</h3>
-            <div style="width:80%">
-            <pre class="brush: xml">
-                {% if title|length > 0 %}
-                    <h1>{{ title }}</h1>
-                {% endif %}
-
-                {% for key,message in messages %}
-                    <p style="color: {{ key }};">{{ message }}</p>
-                {% endfor %}
-            </pre>
-            </div>
-            <h3>Displays Something Like:</h3>
-            <div class="alert alert-info" style="padding:10px; border: solid 2px darkblue; width: 60%;">
-                <h4>Welcome to My Game</h4>
-                <p style="color:red">This is my first page.</p>
-                <p style="color: darkgreen">Twig makes Templates Easy.</p>
-                <p style="color:purple">I Like Pie.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5f.0"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/frames.png');background-repeat: no-repeat; background-position: bottom center;background-size: 75% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Images, CSS, Javascript</h3>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> app/Resources vs. src/MyTeam/MyGame/Resources </li>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> php app/console assets:install --symlink web</li>
-            <h3>Using Assetic Asset Management</h3>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> php app/console assetic:dump --env=prod</li>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide5df.1"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/tetris_big.gif');background-repeat: no-repeat; background-position: top right;background-size: 20% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>My First Page: Route, Controller, Template <span class="glyphicon glyphicon-pause"></span></h3>
-            <hr>
-            <h3>Using Multiple Controllers</h3>
-            <p>As your project gets bigger, consider specializing your controllers</p>
-            <table style="width:90%;margin-left:auto;margin-right:auto;">
-                <tr>
-                    <td style="width:60%;">
-                        <li style="list-style:none"><i class="fa fa-heart"></i> Example: Page + Controller.php</li>
-                        <li style="list-style:none"><i class="fa fa-heart"></i> Example: Session + Controller.php</li>
-                        <li style="list-style:none"><i class="fa fa-heart"></i> Example: Form + Controller.php</li>
-                    </td>
-                </tr>
-            </table>
-            <div style="width:70%">
-            <pre class="brush: php" style="width:50%">
-                // MyTeam/MyGame/Controller/PageController.php
-                class PageController extends Controller {}
-            </pre>
-            <pre class="brush: php" style="width:50%">
-                // MyTeam/MyGame/Controller/SessionController.php
-                class SessionController extends PageController {}
-            </pre>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide6a"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/doctrine-logo.gif');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating an Entity (Doctrine) <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Create a new directory:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGame/Entity</li>
-            <h3>Create a new PHP file:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGame/Entity/Item.php</li>
-            <h3>Use Annotations to define your Entity:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> Example: @ORM\Column(type="decimal", scale=2)</li>
-            <li style="list-style:none"><i class="fa fa-heart"></i> Example: @ORM\Column(type="string", length=100)</li>
-            <li style="list-style:none"><i class="fa fa-heart"></i> Reference: <span style="color:darkorange;font-weight:bold;">http://docs.doctrine-project.org/</span></li>
         </div>
     </div>
 
     <div class="slide ui-corner-all" id="slide6b"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/doctrine-logo.gif');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating an Entity (Doctrine) <span class="glyphicon glyphicon-play"></span></h3>
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Layouts and Blocks <span class="glyphicon glyphicon-play"></span></h3>
             <hr>
-            <h3>Our New Entity</h3>
-            <div style="width:65%">
-            <pre class="brush: php">
-                namespace MyTeam\MyGameBundle\Entity;
-
-                use Doctrine\ORM\Mapping as ORM;
-
-                /**
-                 * @ORM\Entity
-                 * @ORM\Table(name="item")
-                 */
-                class Item
-                {
-                    /**
-                     * @ORM\Id
-                     * @ORM\Column(type="integer")
-                     * @ORM\GeneratedValue(strategy="AUTO")
-                     */
-                    protected $id;
-            </pre>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide6c"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/doctrine-logo.gif');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating an Entity (Doctrine) <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Add Custom Fields</h3>
-            <div style="width:65%">
-            <pre class="brush: php">
-                    /**
-                     * @ORM\Column(type="string", length=64)
-                     */
-                    protected $name;
-
-                    /**
-                     * @ORM\Column(type="decimal", scale=2)
-                     */
-                    protected $value;
-
-                    /**
-                     * @ORM\Column(type="integer", nullable=true)
-                     */
-                    protected $available;
-            </pre>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide6d"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/doctrine-logo.gif');background-repeat: no-repeat; background-position: bottom right;background-size: 24% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating an Entity (Doctrine) <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Update the Database</h3>
-            <div class="alert alert-info" style="width:100%; border: solid 2px darkblue; padding:5px;">
-                <h6>php app/console doctrine:schema:update --force</h6>
-            </div>
-            <h3>Generate Getters and Setters </h3>
-            <div class="alert alert-info" style="width:100%; border: solid 2px darkblue; padding:5px;">
-                <h6>php app/console doctrine:generate:entities MyTeam/MyGameBundle/Entity/Item</h6>
-            </div>
-            <h3>Add Entity Access to a Controller</h3>
-            <div style="width:78%">
-                <small>
-                    <pre class="brush: php">
-                        namespace MyTeam\MyGameBundle\Controller;
-
-                        use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-                        use MyTeam\MyGameBundle\Entity\Item;
-
-                        class DefaultController extends Controller
-                        {
-                            public function indexAction()
-                            {
-                                $em = $this->getDoctrine()->getManager();
-                    </pre>
-                </small>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide6e"  style="width:100%;height:100%;">
-        <div style="min-width:80%; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating an Entity (Doctrine) <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Using an Entity in a Controller</h3>
-        </div>
-        <div style="width:85%;margin-left:auto;margin-right:auto;">
-            <small>
-                <pre class="brush: php">
-                        public function browseItemsAction()
-                        {
-                            $em = $this->getDoctrine()->getManager();
-
-                            $items = $em->getRepository('MyTeamMyGameBundle:Item')->findAll();
-
-                            $query = $em->createQueryBuilder()
-                                ->select('c')
-                                ->from('MyTeamMyGameBundle:Item', 'c')
-                                ->where('c.name LIKE :prefer')
-                                ->setParameters(array('prefer' => 'Armor'))
-                                ->setMaxResults(1)
-                                ->orderBy("c.value","DESC")
-                                ->getQuery();
-
-                            $recommend = $query->getSingleResult();
-
-                            return $this->render('MyTeamMyGameBundle:Default:browseItems.html.twig',
-                                array(
-                                    'items' => $items,
-                                    'recommend' => $recommend
-                            ));
-                        }
-                </pre>
-            </small>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide6f"  style="width:100%;height:100%;">
-        <div style="min-width:80%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating an Entity (Doctrine) <span class="glyphicon glyphicon-pause"></span></h3>
-            <hr>
-            <h3>Using an Entity in a Template</h3>
-            <div style="width:100%;margin-left:auto;margin-right:auto;">
-                <small>
-                    <pre class="brush: xml">
-                        <h1>Items</h1>
-
-                        <div class="alert alert-success">
-                            <h3>We Recommend: {{ recommend.name }}</h3>
-                        </div>
-
-                        {% for item in items %}
-                            {% if item.available > 0 %}
-                                <button onclick="addItem('{{ item.name }}')">
-                                    {{ item.name }} (+ v{{ item.value }})
-                                </button>
-                            {% endif %}
-                        {% endfor %}
-                    </pre>
-                </small>
-            </div>
-            <div style="width:100%;text-align: center;" class="text-center">
-                <img src="images/long-cartoon-look-up-elephant.png" style="max-height:33%">
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slideBundle1"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Installing a Bundle <span class="glyphicon glyphicon-pause"></span></h3>
-            <hr>
-            <h3>Add to composer.json "Require":</h3>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> "avalanche123/imagine-bundle": "v2.1",</li>
-            <h3>Run composer update:</h3>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> php composer.phar update avalanche123/imagine-bundle</li>
-            <h3>Add to app/AppKernel.php bundles array</h3>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),</li>
-            <h3>README.md</h3>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> check the Readme for specific config requirements.</li>
-            <div style="width:65%;text-align: center;margin-left:auto;margin-right:auto;margin-top:10px;" class="text-center">
-                <img src="images/two-elephants-ascance.png" style="max-height:50%;">
-            </div>
-            </div>
-        </div>
-
-    <div class="slide ui-corner-all" id="slide7a"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating a Command <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <h3>Create a new directory:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Command</li>
-            <h3>Create a new PHP file:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Command/regenerateHealthCommand.php</li>
-            <h3>Create your Command:</h3>
-            <div style="width:100%">
-                <small>
-                    <pre class="brush: php">
-                        use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-                        use Symfony\Component\Console\Input\InputInterface;
-                        use Symfony\Component\Console\Output\OutputInterface;
-
-                        class regenerateHealthCommand extends ContainerAwareCommand
-                        {
-                             protected function configure()
-                             {
-                                  $this
-                                       ->setName('regenerate-health')
-                                       ->setDescription('Regenerate Character Health');
-                             }
-
-                             protected function execute(InputInterface $input, OutputInterface $output)
-                             {
-                                $output->writeln("complete.");
-                            }
-                        }
-
-                        </pre>
-                </small>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide7b"  style="width:100%;height:100%;">
-        <div style="min-width:80%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating a Command <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-        </div>
-        <div style="min-width:80%;margin-left:auto;margin-right:auto;">
-            <small>
-            <pre class="brush: php">
-                protected function configure()
-                {
-                    $this
-                        ->setName('regenerate-health')
-                        ->setDescription('Regenerate Character Health')
-                        ->setDefinition(array(
-                                 new InputArgument(
-                                'char_id',
-                                InputArgument::REQUIRED,
-                                'character id'
-                            )
-                        ));
-                }
-            </pre>
-            </small>
-            <div style="width:100%;text-align:center;">
-                <div class="alert alert-success text-center" style="margin-top:0px;width:50%;border: solid 2px darkgreen; padding:5px;margin-bottom:5px;margin-left:auto;margin-right:auto;">
-                    <h4>php app/console regenerate-health 23</h4>
-                </div>
-            </div>
-            <div style="width:65%;text-align: center;margin-left:auto;margin-right:auto;" class="text-center">
-                <img src="images/long-cartoon-look-left-elephant.png" style="max-height:23%;float:right;">
-                <img src="images/round-cartoon-look-right-elephant.png" style="max-height:23%;float:left;">
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide7c"  style="width:100%;height:100%;">
-        <div style="min-width:80%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating a Command <span class="glyphicon glyphicon-pause"></span></h3>
-            <hr>
-            <div style="width:100%;margin-left:auto;margin-right:auto;">
-                <small>
-                    <pre class="brush: php">
-                            protected function execute(InputInterface $input, OutputInterface $output)
-                            {
-                                $em = $this->getContainer()->get('doctrine')->getManager('default');
-                                $char_id = $input->getArgument('char_id');
-
-                                $character = $em->getRepository('MyTeamMyGameBundle:Characters')
-                                                ->findOneById($char_id);
-
-                                $current_health = $character->getCurrentHealth();
-                                $max_health = $character->getMaxHealth();
-
-                                $character->setCurrentHealth($max_health);
-                                $em->persist($character);
-                                $em->flush();
-
-                                $output->writeln("Regeneration Complete.");
-                            }
-                    </pre>
-                </small>
-            <div class="alert alert-success text-center" style="width:50%;border: solid 2px darkgreen; padding:5px;margin-bottom:5px;">
-                <h4>php app/console regenerate-health 23</h4>
-            </div>
-                <img src="images/knight.png" style="height:500px;position:relative; bottom: 350px; float:right; padding:0px; margin:0px; right: -50px; z-index:100;">
-            </div>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide8a"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/round-cartoon-look-down-elephant.png');background-repeat: no-repeat; background-position: 90% 10%;background-size: 23% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating a Service <span class="glyphicon glyphicon-play"></span></h3>
-            <hr style="width:70%">
-            <h3>Create a new directory:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Services</li>
-            <h3>Create a new PHP file:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Services/CharacterEffect.php</li>
-            <h3>Define the new Service:</h3>
-            <li style="list-style:none"><i class="fa fa-heart"></i> src/MyTeam/MyGameBundle/Resources/config/services.yml</li>
-            <div style="width:80%">
+            <h3>Create a Layout</h3>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Create a basic html page.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Include elements you will want all pages to have.</li>
+            <div style="width:65%;text-align:right">
             <pre class="brush: xml">
-                parameters:
-                    my.service.location:      MyTeam\MyGameBundle\Services\
+                &lt;html&gt;
 
-                services:
-                    character_effect:
-                        class:                  %my.service.location%CharacterEffect
-                        arguments:
-                            entityManager:      "@doctrine.orm.entity_manager"
+                    &lt;head&gt;
+                        <link rel="stylesheet" href="style.css" />
+                        <title>Game Title</title>
+                    &lt;/head&gt;
+
+                    &lt;body&gt;
+                        <div id="content"></div>
+
+
+                        <div id="footer">&copy; Copyright 2015 by MyGamesCom.</div>
+                    &lt;/body&gt;
+
+                &lt;/html&gt;
+            </pre>
+                layout.html(.twig)
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide6b.1"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Layouts and Blocks <span class="glyphicon glyphicon-play"></span></h3>
+            <hr>
+            <h3>Add Blocks to the Layout</h3>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Blocks designate areas that may be replaced by child templates.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Block content in the layout will be the default.</li>
+            <div style="width:68%; text-align:right">
+            <pre class="brush: xml">
+                &lt;html&gt;
+                    {% block head %}
+                        &lt;head&gt;
+                            <link rel="stylesheet" href="style.css" />
+                            <title>
+                                {% block title %}Game Title{% endblock %}
+                            </title>
+                        &lt;/head&gt;
+                    {% endblock %}
+
+                    &lt;body&gt;
+                        <div id="content">{% block content %}{% endblock %}</div>
+
+
+                        <div id="footer">
+                            {% block footer %}
+                                &copy; Copyright 2015 by MyGamesCom.
+                            {% endblock %}
+                        </div>
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            </pre>
+                layout.html(.twig)
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide6b.2"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Layouts and Blocks <span class="glyphicon glyphicon-pause"></span></h3>
+            <hr>
+            <h3>Create a Child Template</h3>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Create a character_sheet template.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Extend the layout.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Replace some Blocks with new content.</li>
+            <div style="width:65%; text-align:right">
+                <pre class="brush: xml">
+                    {% extends "layout.html(.twig)" %}
+
+                    {% block title %}Character Sheet{% endblock %}
+                    {% block head %}
+                        {{ parent() }}
+                        <style type="text/css">
+                            .important { color: #336699; }
+                        </style>
+                    {% endblock %}
+                    {% block content %}
+                        <h2>Character Name</h2>
+                        <h4>
+                            Character Information
+                        </h4>
+                    {% endblock %}
+                </pre>
+                character_sheet.html(.twig)
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide7"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Variables <span class="glyphicon glyphicon-play"></span></h3>
+            <hr>
+            <h3>Passing Variables into a Template</h3>
+            <div style="width:85%; text-align:center">
+                From a Symfony2 Controller
+                <pre class="brush: php">
+                    public function characterSheetAction()
+                    {
+                        return $this->render('MyTeamGameBundle:Default:character_sheet.html.twig',
+                            array(
+                                'name' => 'Sir Knight',
+                                'adventure_class' => 'adventurer',
+                                'level' => 1000,
+                                'attributes' => [ 'Health' => 2000, 'Magic' => 1300 ]
+                            )
+                        );
+                    }
                 </pre>
             </div>
         </div>
     </div>
 
-    <div class="slide ui-corner-all" id="slide8b"  style="width:100%;height:100%;">
-        <div style="min-width:80%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating a Service <span class="glyphicon glyphicon-play"></span></h3>
+    <div class="slide ui-corner-all" id="slide7.1"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Variables <span class="glyphicon glyphicon-play"></span></h3>
             <hr>
-        </div>
-        <div style="max-width:90%;margin-left:auto;margin-right:auto;">
-            <pre class="brush: php">
-                namespace MyTeam\MyGameBundle\Services;
-                use Doctrine\ORM\EntityManager;
-                use MyTeam\MyGameBundle\Entity\Character;
-                use MyTeam\MyGameBundle\Entity\Item;
-                use MyTeam\MyGameBundle\Entity\Storage;
-
-                class CharacterEffect
-                {
-                    public function __construct(EntityManager $entityManager)
-                    {
-                        $this->em = $entityManager;
-                    }
-
-                    public function awardItem(Character $character, Item $item)
-                    {
-                        $em = $this->em;
-
-                        ...
-                    }
-            </pre>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide8c"  style="width:100%;height:100%;">
-        <div style="min-width:80%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Creating a Service <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-        </div>
-        <div style="max-width:90%;margin-left:auto;margin-right:auto;">
-            <small>
-            <pre class="brush: php">
-                    public function awardItem(Character $character, Item $item)
-                    {
-                        $em = $this->em;
-
-                        $char_name = $character->getName();
-                        $char_id = $character->getId();
-                        $item_name = $item->getName();
-                        $item_id = $item->getId();
-
-                        $owned = $em->getRepository('MyTeamMyGameBundle:Storage')
-                                    ->findOneBy(array(
-                                        'item_id'=>$item_id,
-                                        'char_id'=>$char_id
-                                    ));
-                        if (empty($owned)){
-                            $owned = new Storage();
-                            $owned->setItemId($item_id);
-                            $owned->setCharId($char_id);
-                            $owned->setAmount(0);
-                        }
-                        $owned->setAmount($owned->getAmount() + 1);
-                        $em->persist($owned);
-                        $em->flush();
-
-                        $message = "$char_name has received a new $item_name!";
-
-                        return $message;
-                    }
-            </pre>
-            </small>
-        </div>
-    </div>
-
-    <div class="slide ui-corner-all" id="slide8d"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Calling Your Service <span class="glyphicon glyphicon-play"></span></h3>
-            <hr>
-            <div style="min-width:80%;margin-left:auto;margin-right:auto;">
-                <h3>From a Controller</h3>
-                <li style="list-style:none"><i class="fa fa-heart"></i> $message = $this->get('character_effect')->awardItem($character, $item);</li>
-                <h3>From a Command</h3>
-                <li style="list-style:none"><i class="fa fa-heart"></i> $message = $this->getContainer()->get('character_effect')->awardItem($character,$item);</li>
+            <h3>Passing Variables into a Template</h3>
+            <div style="width:75%; text-align:center">
+                From index.php
+                <pre class="brush: php">
+                    echo $twig->render('index.html', array(
+                            'name' => 'Sir Knight',
+                            'adventure_class' => 'adventurer',
+                            'level' => 1000,
+                            'attributes' => [ 'Health' => 2000, 'Magic' => 1300 ]
+                        );
+                </pre>
             </div>
         </div>
     </div>
 
-    <div class="slide ui-corner-all" id="slide8e"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Calling Your Service <span class="glyphicon glyphicon-play"></span></h3>
+    <div class="slide ui-corner-all" id="slide7.2"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/knight.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Variables <span class="glyphicon glyphicon-play"></span></h3>
             <hr>
-            <div style="min-width:80%;margin-left:auto;margin-right:auto;">
-                <h3>From a Controller</h3>
-                <li style="list-style:none"><i class="fa fa-heart"></i> $message = $this->get('character_effect')->awardItem($character, $item);</li>
-                <h3>From a Command</h3>
-                <li style="list-style:none"><i class="fa fa-heart"></i> $message = $this->getContainer()->get('character_effect')->awardItem($character,$item);</li>
+            <h3>Printing Variables</h3>
+            <div style="width:65%; text-align:right">
+                <pre class="brush: xml">
+                    {% block content %}
+                        <h2>{{ name }}</h2>
+                        <h4>
+                            Level {{ level }} {{ adventure_class }}
+                        </h4>
+                    {% endblock %}
+                </pre>
+                character_sheet.html(.twig)
+                <hr>
             </div>
-            <div style="width:65%;text-align: center;margin-left:auto;margin-right:auto;" class="text-center">
-                <img src="images/valentine-thats-all-elephant.png" style="max-height:50%;">
+            <div style="width:65%; text-align:right;">
+                <div class="alert alert-info" style="border: solid 2px darkgray; padding: 10px;">
+                     <h2>Sir Knight</h2>
+                    <h4>
+                        Level 1000 adventurer
+                    </h4>
+                </div>
+                render
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide8.1"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/archer.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Variables: Strings Filters <span class="glyphicon glyphicon-play"></span></h3>
+            <hr>
+            <div style="width:70%; text-align:right">
+                <pre class="brush: xml">
+                    {% block content %}
+                        <h2>
+                            {{ name|replace({ 'Sir': 'Lady', 'Knight': 'Ranger' }) }}
+                        </h2>
+                        <h4>
+                            Level {{ level|number_format }} {{ adventure_class|title }}
+                        </h4>
+                    {% endblock %}
+                </pre>
+                character_sheet.html(.twig)
+                <hr>
+            </div>
+            <div style="width:65%; text-align:right;">
+                <div class="alert alert-info" style="border: solid 2px darkgray; padding: 10px; margin: 5px;">
+                    <h2>Lady Ranger</h2>
+                    <h4>
+                        Level 1,000 Adventurer
+                    </h4>
+                </div>
+                render
+            </div>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The title filter shown applied to adventure_class.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Applying upper or lower filters would print: ADVENTURER or adventurer.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The replace filter shown applied to name.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The number_format filter shown applied to level.</li>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide8.2"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/knight.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Variables: String Filters <span class="glyphicon glyphicon-play"></span></h3>
+            <hr>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The title filter shown applied to adventure_class would print: Adventurer.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Applying upper or lower filters would print: ADVENTURER or adventurer</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The replace filter shown applied to name would print: Lady Ranger</li>
+            <div style="width:65%; text-align:right">
+                <pre class="brush: xml">
+                    {% block content %}
+                        <h2>{{ name|replace({ 'Sir': 'Lady', 'Knight': 'Ranger' }) }}</h2>
+                        <h4>
+                            {{ level|number_format }} {{ adventure_class|title }}
+                        </h4>
+                    {% endblock %}
+                </pre>
+                character_sheet.html(.twig)
+            </div>
+
+            <div style="position:relative; width:100%;text-align: center;top:-50px;" class="text-center">
+                http://twig.sensiolabs.org/doc/filters/index.html
             </div>
         </div>
     </div>
@@ -1022,9 +521,9 @@
 <script src="js/deck.custom.js"></script>
 
 <!-- Activate deck.js and SyntaxHighlighter -->
-<script type="text/javascript">
-$(function() { $.deck('.slide'); });
-SyntaxHighlighter.all();
+<script data-cfasync="false" type="text/javascript">
+    $(function() { $.deck('.slide'); });
+    SyntaxHighlighter.all();
 </script>
 
 </body>

@@ -75,7 +75,7 @@ var sh = {
 		/** Gets or sets light mode. Equavalent to turning off gutter and toolbar. */
 		'light' : false,
 		
-		'html-script' : false
+		'html-script' : true
 	},
 	
 	config : {
