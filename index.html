@@ -109,11 +109,10 @@
             <h3>#1 Installation & Setup</h3>
             <h3>#2 Layouts and Blocks</h3>
             <h3>#4 Variables</h3>
-            <h3>#5 String Filters</h3>
+            <h3>#5 Filters</h3>
             <h3>#6 Template Logic</h3>
-            <h3>#7 Render and Include</h3>
-            <h3>#8 Custom Filters</h3>
-            <h3>#9 Questions</h3>
+            <h3>#7 Including Templates</h3>
+            <h3>#8 Questions</h3>
         </div>
     </div>
 
@@ -331,7 +330,7 @@
             <h3>Variables <span class="glyphicon glyphicon-play"></span></h3>
             <hr>
             <h3>Passing Variables into a Template</h3>
-            <div style="width:85%; text-align:center">
+            <div style="width:80%; text-align:center">
                 From a Symfony2 Controller
                 <pre class="brush: php">
                     public function characterSheetAction()
@@ -373,7 +372,6 @@
         <div style="min-width:80%;height:100%;background-image: url('images/knight.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
             <h3>Variables <span class="glyphicon glyphicon-play"></span></h3>
             <hr>
-            <h3>Printing Variables</h3>
             <div style="width:65%; text-align:right">
                 <pre class="brush: xml">
                     {% block content %}
@@ -432,27 +430,267 @@
         </div>
     </div>
 
-    <div class="slide ui-corner-all" id="slide8.2"  style="width:100%;height:100%;">
-        <div style="min-width:80%;height:100%;background-image: url('images/knight.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
-            <h3>Variables: String Filters <span class="glyphicon glyphicon-play"></span></h3>
+    <div class="slide ui-corner-all" id="slide8.3"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/twig-logo.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Variables: Other Filters <span class="glyphicon glyphicon-pause"></span></h3>
             <hr>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The title filter shown applied to adventure_class would print: Adventurer.</li>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Applying upper or lower filters would print: ADVENTURER or adventurer</li>
-            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> The replace filter shown applied to name would print: Lady Ranger</li>
-            <div style="width:65%; text-align:right">
-                <pre class="brush: xml">
+            <div class="alert alert-warning" style="border: solid 2px; padding:10px;margin:10px;width:50%;">
+                <h3>More Filter Examples</h3>
+                <hr>
+                <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Absolute: {{ -23|abs }} prints 23.</li>
+                <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Round: {{ 3.141592|round }} prints 3.</li>
+                <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Round: {{ 3.141592|round(2,'ceil') }} prints 3.15.</li>
+                <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> First: {{ 12345|first }} prints 1.</li>
+                <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> Last: {{ { 'a', 'b', 'c' }|last }} prints c.</li>
+            </div>
+
+            <div style="clear:both"></div>
+            <div class="alert alert-info text-center" style="border: solid 2px darkgray;padding:5px;width:50%;margin-left:auto;margin-right:auto;">
+                <h4>http://twig.sensiolabs.org/doc/filters/index.html</h4>
+            </div>
+
+            <table style="width:75%;text-align:left;font-size:28px;margin-top:20px;">
+                <tr>
+                    <td style="width:24%;">
+                        abs<br/>
+                        batch<br/>
+                        capitalize<br/>
+                        date_modify<br/>
+                        default<br/>
+                        escape<br/>
+                        first<br/>
+                        format
+                    </td>
+                    <td style="width:24%;">
+                        join<br/>
+                        json_encode<br/>
+                        keys<br/>
+                        last<br/>
+                        length<br/>
+                        lower<br/>
+                        merge<br/>
+                        raw
+                    </td>
+                    <td style="width:24%;">
+                        slice<br/>
+                        sort<br/>
+                        split<br/>
+                        striptags<br/>
+                        title<br/>
+                        trim<br/>
+                        upper<br/>
+                        url_encode
+                    </td>
+                    <td>
+                        replace<br/>
+                        reverse<br/>
+                        round<br/>
+                        nl2br<br/>
+                        number_format<br/>
+                        convert_encoding<br/>
+                        date
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide8.4"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/archer.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Logic <span class="glyphicon glyphicon-pause"></span></h3>
+            <hr>
+            <div style="width:70%; text-align:right">
+                <pre class="brush: xml; highlight: [2, 10, 14]">
                     {% block content %}
-                        <h2>{{ name|replace({ 'Sir': 'Lady', 'Knight': 'Ranger' }) }}</h2>
-                        <h4>
-                            {{ level|number_format }} {{ adventure_class|title }}
-                        </h4>
+                        {% if 'Health' in attributes|keys and attributes.Health > 0 %}
+                            <div class="alert alert-success">
+                                {% set has_attributes = attributes|length %}
+                                {% for attribute,value in attributes %}
+                                    <h4>{{ attribute }}: {{ value|number_format }}</h4>
+                                {% endfor %}
+                                <p>{{ name }} has {{ has_attributes }} attributes.</p>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-danger">
+                                <h4>{{ name }} is Dead!</h4>
+                            </div>
+                        {% endif %}
                     {% endblock %}
                 </pre>
                 character_sheet.html(.twig)
+                <hr>
+            </div>
+            <div style="width:65%; text-align:right;">
+                <table style="width:100%">
+                    <tr>
+                        <td style="text-align: center;">
+                            <div class="alert alert-info text-center pull-right" style="border: solid 2px darkgray; padding: 10px; margin: 5px; width: 350px; height: 120px;">
+                                <h4>
+                                    Health: 2,000
+                                </h4>
+                                <h4>
+                                    Magic: 1,300
+                                </h4>
+                                <p>Lady Ranger has 2 attributes.</p>
+                            </div>
+                        </td>
+                        <td style="text-align: center; width:260px">
+                            <h4>OR</h4>
+                            <h5>If Health < 0 or unset</h5>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="alert alert-danger text-center pull-left" style="border: solid 2px darkred; padding: 10px; margin: 5px; width: 350px; height: 120px;">
+                                <h4>
+                                    Lady Ranger is Dead!
+                                </h4>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                render
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide8.4a"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/archer.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Logic <span class="glyphicon glyphicon-pause"></span></h3>
+            <hr>
+            <div style="width:70%; text-align:right">
+                <pre class="brush: xml; highlight: [4, 8]">
+                    {% block content %}
+                        {% if 'Health' in attributes|keys and attributes.Health > 0 %}
+                            <div class="alert alert-success">
+                                {% set has_attributes = attributes|length %}
+                                {% for attribute,value in attributes %}
+                                    <h4>{{ attribute }}: {{ value|number_format }}</h4>
+                                {% endfor %}
+                                <p>{{ name }} has {{ has_attributes }} attributes.</p>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-danger">
+                                <h4>{{ name }} is Dead!</h4>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </pre>
+                character_sheet.html(.twig)
+                <hr>
+            </div>
+            <div style="width:65%; text-align:right;">
+                <table style="width:100%">
+                    <tr>
+                        <td style="text-align: center;">
+                            <div class="alert alert-info text-center pull-right" style="border: solid 2px darkgray; padding: 10px; margin: 5px; width: 350px; height: 120px;">
+                                <h4>
+                                    Health: 2,000
+                                </h4>
+                                <h4>
+                                    Magic: 1,300
+                                </h4>
+                                <p>Lady Ranger has 2 attributes.</p>
+                            </div>
+                        </td>
+                        <td style="text-align: center; width:260px">
+                            <h4>OR</h4>
+                            <h5>If Health < 0 or unset</h5>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="alert alert-danger text-center pull-left" style="border: solid 2px darkred; padding: 10px; margin: 5px; width: 350px; height: 120px;">
+                                <h4>
+                                    Lady Ranger is Dead!
+                                </h4>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                render
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide8.5"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;background-image: url('images/archer.png');background-repeat: no-repeat; background-position: bottom right;background-size: 35% auto; top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Logic <span class="glyphicon glyphicon-pause"></span></h3>
+            <hr>
+            <div style="width:70%; text-align:right">
+                <pre class="brush: xml; highlight: [5, 7]">
+                    {% block content %}
+                        {% if 'Health' in attributes|keys and attributes.Health > 0 %}
+                            <div class="alert alert-success">
+                                {% set has_attributes = attributes|length %}
+                                {% for attribute,value in attributes %}
+                                    <h4>{{ attribute }}: {{ value|number_format }}</h4>
+                                {% endfor %}
+                                <p>{{ name }} has {{ has_attributes }} attributes.</p>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-danger">
+                                <h4>{{ name }} is Dead!</h4>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </pre>
+                character_sheet.html(.twig)
+                <hr>
+            </div>
+            <div style="width:65%; text-align:right;">
+                <table style="width:100%">
+                    <tr>
+                        <td style="text-align: center;">
+                            <div class="alert alert-info text-center pull-right" style="border: solid 2px darkgray; padding: 10px; margin: 5px; width: 350px; height: 120px;">
+                                <h4>
+                                    Health: 2,000
+                                </h4>
+                                <h4>
+                                    Magic: 1,300
+                                </h4>
+                                <p>Lady Ranger has 2 attributes.</p>
+                            </div>
+                        </td>
+                        <td style="text-align: center; width:260px">
+                            <h4>OR</h4>
+                            <h5>If Health < 0 or unset</h5>
+                        </td>
+                        <td style="text-align: center;">
+                            <div class="alert alert-danger text-center pull-left" style="border: solid 2px darkred; padding: 10px; margin: 5px; width: 350px; height: 120px;">
+                                <h4>
+                                    Lady Ranger is Dead!
+                                </h4>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                render
+            </div>
+        </div>
+    </div>
+
+    <div class="slide ui-corner-all" id="slide8.6"  style="width:100%;height:100%;">
+        <div style="min-width:80%;height:100%;top:0px; left:0px; border: solid 1px white; padding-left:5%;padding-right:5%;margin-left:auto;margin-right:auto;">
+            <h3>Include <span class="glyphicon glyphicon-pause"></span></h3>
+            <hr>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> A template may include other templates to assemble a page in pieces.</li>
+            <li style="list-style:none;margin-left:50px;"><i class="fa fa-heart"></i> In Symfony2 projects, include the full bundle name in your include.</li>
+            <div style="width:70%; text-align:right; margin-left:auto;margin-right:auto;">
+                <pre class="brush: xml; highlight: [3, 7]">
+                    {% if 'Health' in attributes|keys and attributes.Health > 0 %}
+
+                        {% include 'attributes.html' with  { 'attributes': attributes } %}
+
+                    {% else %}
+
+                        {% include 'dead_character.html' %}
+
+                    {% endif %}
+                </pre>
+                character_sheet.html(.twig)
+                <hr>
             </div>
 
-            <div style="position:relative; width:100%;text-align: center;top:-50px;" class="text-center">
-                http://twig.sensiolabs.org/doc/filters/index.html
+            <div style="position:relative; width:100%;text-align: center;" class="text-center">
+                <img src="images/elephpants.gif" style="max-height:250px;margin-left:auto;margin-right:auto;"><br/>
             </div>
         </div>
     </div>
